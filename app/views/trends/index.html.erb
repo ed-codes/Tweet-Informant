@@ -1,0 +1,47 @@
+<div id="container">
+
+	<aside style="width: 200px;">
+		
+	</aside>
+	
+</div>
+
+<script src ="tweet_informant.js"></script>
+
+<script type="text/template" id="tmplAvailable">
+	<ul>
+		<%% for (var i =0; i < datalist.length; i++) { %>
+		<%% var dataobj = datalist[i]; %>
+		<li><a href="/blah" class="loc"><%%= dataobj.name %> : <%%= dataobj.woeid %> </a> </li>
+		<%% } %>	
+	</ul>
+</script>
+
+
+
+<script>
+
+	// $( ".loc" ).on('click', function( event ) {
+	// 	alert( event.isDefaultPrevented() );
+	// 	event.preventDefault();
+
+	// });
+
+	var render = function(data){
+
+		var tmplMarkup = $('#tmplAvailable').html();
+		var compiledTmpl = _.template(tmplMarkup, {datalist : data});
+		$("aside").html(compiledTmpl);
+		// console.log(data.count);
+
+	};
+
+
+	$.ajax({
+		url: "/trends/available"
+	}).done(function(data){
+		$(data).each(render(data));
+	});
+
+
+</script>

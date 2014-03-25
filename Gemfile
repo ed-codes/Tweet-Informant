@@ -32,8 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-
 gem 'twitter', '~> 5.8.0'
+
+# https://github.com/meleyal/backbone-on-rails
+gem 'backbone-on-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
