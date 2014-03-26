@@ -37,6 +37,11 @@ gem 'twitter', '~> 5.8.0'
 # https://github.com/meleyal/backbone-on-rails
 gem 'backbone-on-rails'
 
+
+gem 'bootstrap-sass'
+
+gem 'httparty'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

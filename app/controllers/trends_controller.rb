@@ -17,7 +17,16 @@ class TrendsController < ApplicationController
 	end
 
 	def available
-		@trends_available = @client.trends_available
+		@trends_available = City.all
+
+		if @trends_available.empty?
+			@trends_available = @client.trends_available
+
+			@trends_available.each do |c| 
+				City.create(name: c.name, woeid: c.woeid)
+			end
+		end
+
 		render :json => @trends_available
 	end
 
@@ -25,6 +34,10 @@ class TrendsController < ApplicationController
 	def place
 		@trends_place = @client.trends(params[:place_id])
 		render :json => @trends_place
+	end
+
+	def search 
+		# @tweet_search = 
 	end
 
 

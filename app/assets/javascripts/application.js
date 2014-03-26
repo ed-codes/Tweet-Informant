@@ -11,14 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
-//= require tweet_informant
-//= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
+//= require jquery_ujs
+//= require turbolinks
+//= require ammap
+//= require worldLow
+//= require map
 //= require_tree .

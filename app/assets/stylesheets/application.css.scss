@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+/*stops navbar from overlaying content*/
+body { padding-top: 40px; }
+
+/*allows me to set other stuff to 100%*/
+body, html {
+  height: 100%;
+}
+
+#container {
+	margin: 60px 30px 0 30px;
+}
+
+#map, #topics, #tweets {
+	border: 10px solid #E4ECF5;
+	height: 85vh;
+	overflow: scroll;
+
+}
+

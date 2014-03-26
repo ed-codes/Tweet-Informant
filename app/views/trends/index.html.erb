@@ -1,47 +1,114 @@
-<div id="container">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<h1>Tweet Informant</h1>
 
-	<aside style="width: 200px;">
-		
-	</aside>
+	</div>
+</nav>
+
+
+<div id="container" class="container-fluid">
+
+
+	<div class="row">
+
+
+		<div id="mapcontainer" class="col-md-6">
+			
+			<div id="map">
+				
+			</div>
+
+		</div>
+
+		<aside class="col-md-6">
+			
+			<div id="topics" class="col-md-4">
+				<h4>Click on a city to see the trending topics</h4>
+			</div>
+
+			<div id="tweets" class="col-md-8">
+			<h4>Click on a topic to see tweets on that topic, or simply search</h4>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				<div class="clearfix"></div>
+				
+				<ul id="list">
+				</ul>
+			</div>
+
+			
+			
+		</aside>
+
+	</div> <!-- end row -->
 	
 </div>
 
-<script src ="tweet_informant.js"></script>
 
 <script type="text/template" id="tmplAvailable">
-	<ul>
-		<%% for (var i =0; i < datalist.length; i++) { %>
-		<%% var dataobj = datalist[i]; %>
-		<li><a href="/blah" class="loc"><%%= dataobj.name %> : <%%= dataobj.woeid %> </a> </li>
-		<%% } %>	
-	</ul>
+	<li><a href="#" class="loc"><%%= city.name %> : <%%= city.woeid %> lat: <%%= city.lat %> long: <%%= city.long %> </a> </li>
 </script>
-
 
 
 <script>
 
-	// $( ".loc" ).on('click', function( event ) {
-	// 	alert( event.isDefaultPrevented() );
-	// 	event.preventDefault();
+	$("aside").on('click', 'a', function( event ) {
+		console.log('damn u');
+		//alert( event.isDefaultPrevented() );
+		event.preventDefault();
+	});
 
-	// });
+	
 
-	var render = function(data){
+	var cities = [];
+	var topics = [];
 
-		var tmplMarkup = $('#tmplAvailable').html();
-		var compiledTmpl = _.template(tmplMarkup, {datalist : data});
-		$("aside").html(compiledTmpl);
-		// console.log(data.count);
+	var AvailableView = {};
 
+	// AvailableView.render = function(data){
+
+	// 	var tmplMarkup = $('#tmplAvailable').html();
+
+	// 	var compiledTmpl = _.template(tmplMarkup, {datalist : data});
+	// 	$("aside").html(compiledTmpl);
+	// 	// console.log(data.count);
+
+	// };
+
+	
+
+
+	var PlaceView = {};
+
+	PlaceView.render = function(data){
+		$("").html();
 	};
 
 
 	$.ajax({
 		url: "/trends/available"
 	}).done(function(data){
-		$(data).each(render(data));
+		//cities = data;
+		var tmplMarkup = $('#tmplAvailable').html();
+
+		$.each(data, function(index, city) {			
+			var compiledTmpl = _.template(tmplMarkup, {city : city});
+			$('#list').append(compiledTmpl);
+		});
+		
 	});
+
+
+
+	// $.ajax({
+	// 	url: "/trends/place/1"
+	// }).done(function(data){
+	// 	PlaceView.render();
+	// });
 
 
 </script>
