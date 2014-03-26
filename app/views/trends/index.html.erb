@@ -53,6 +53,10 @@
 	<li><a href="#" class="loc"><%%= city.name %> : <%%= city.woeid %> lat: <%%= city.lat %> long: <%%= city.long %> </a> </li>
 </script>
 
+<script type="text/template" id="tmplTop10">
+	<li><a href="#" class="topic"> <%%= topic %> </a> </li>		
+</script>
+
 
 <script>
 
@@ -67,30 +71,10 @@
 	var cities = [];
 	var topics = [];
 
-	var AvailableView = {};
-
-	// AvailableView.render = function(data){
-
-	// 	var tmplMarkup = $('#tmplAvailable').html();
-
-	// 	var compiledTmpl = _.template(tmplMarkup, {datalist : data});
-	// 	$("aside").html(compiledTmpl);
-	// 	// console.log(data.count);
-
-	// };
-
-	
-
-
-	var PlaceView = {};
-
-	PlaceView.render = function(data){
-		$("").html();
-	};
 
 
 	$.ajax({
-		url: "/trends/available"
+		url: "/trends"
 	}).done(function(data){
 		//cities = data;
 		var tmplMarkup = $('#tmplAvailable').html();
@@ -102,13 +86,14 @@
 		
 	});
 
+	$.ajax({
+		url: "/trends/place/1"
+	}).done(function(data){
+		var tmplMarkup = $('#tmplTop10').html();
 
-
-	// $.ajax({
-	// 	url: "/trends/place/1"
-	// }).done(function(data){
-	// 	PlaceView.render();
-	// });
+		
+		$("").html();
+	});
 
 
 </script>
