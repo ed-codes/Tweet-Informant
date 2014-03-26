@@ -5,6 +5,7 @@ class CreateCities < ActiveRecord::Migration
     	t.integer :woeid
     	t.float :lat
     	t.float :long
+    	t.text :trendlist
 
       t.timestamps
     end

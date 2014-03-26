@@ -20,23 +20,29 @@ class TrendsController < ApplicationController
 		render :json => @trends_available
 	end
 
+	def place
+		@city = City.find_by_woeid(params[:woe_id])
 
-	# def place
-	# 	@trends_place = Place_trendlist.all
 
-	# 	if @trends_place.empty?
-	# 		@trends_place = @client.trends(params[:place_id])
+		if @city && !@city.trendlist.nil?
+			render :json => @city.trendlist
+		else
+
+
+			# if @trends_place && @trends_place.trendlist.blank?
+					@city.trendlist = JSON.generate(@client.trends(params[:woe_id]))
+					@city.save
 			
-	# 		@trends_place.each do |t|
-	# 			Place_trendlist.create(name: t.name, query: t.query, url: t.url)
-	# 		end
-	# 	end
-
-	# 	render :json => @trends_place
-	# end
+			render :json => @city.trendlist
+			# else
+		end
+			# 	render :json => []
+			# end
+		
+	end
 
 	def search 
-		# @tweet_search = 
+		 # @search_results = @client.search(%23auspol, options = {:result_type => "popular"})
 	end
 
 	
