@@ -15,6 +15,7 @@
 //= require backbone
 //= require jquery_ujs
 //= require turbolinks
+//= require twitter-text
 //= require ammap
 //= require worldLow
 //= require map

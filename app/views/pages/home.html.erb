@@ -61,26 +61,36 @@
 </script>
 
 <script type="text/template" id="tmplSearchResults" >
-	<li> <a href="https://twitter.com/<%%= tweet.user.screen_name%>"> <strong><%%= tweet.user.name %></strong> <italic>@<%%= tweet.user.screen_name %></italic> </a>  <br> <%%= tweet.text %></li> <br>
+	<li> <a href="https://twitter.com/<%%= tweet.user.screen_name%>"> <strong><%%= tweet.user.name %></strong> <italic>@<%%= tweet.user.screen_name %></italic> </a>  <br> <%%= tweet.linkedText %></li> <br>
 </script>
 
 <script>
+
 	
 	var submitBtn = $('#submitBtn');
 	var searchInput = $('input.form-control');
+
+	// SEARCH FUNCTION
 
 	submitBtn.on('click', function(event){
 		event.preventDefault();
 		
 		$.ajax({
-			url: '/trends/search/' + searchInput.val()
+			url: '/trends/search/' + encodeURIComponent(searchInput.val())
 		}).done(function(data){
 			
 			var tmplMarkup = $('#tmplSearchResults').html();
 
 			console.log(data);
+			// clear the div
+			$('#SearchResults').html('');
+
 			$.each(data, function(index){
 				var compiledTmpl = _.template(tmplMarkup);
+
+				var linkedText = window.twttr.txt.autoLink(data[index].text);
+
+				data[index].linkedText = linkedText;
 				var html = compiledTmpl({tweet : data[index]});
 
 				$('#SearchResults').append(html);

@@ -94,6 +94,8 @@ $.ajax({
 
 				searchInput.val(topic);
 
+				$('#submitBtn').trigger('click');
+
 			});
 
 		}); // end done getting cities
