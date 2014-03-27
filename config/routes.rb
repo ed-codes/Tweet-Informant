@@ -7,6 +7,7 @@ TweetInformant::Application.routes.draw do
     collection do 
       # get :available
       get '/place/:woe_id' => 'trends#place'
+      get '/search/:query' => 'trends#search'
     end
   end
 
