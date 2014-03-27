@@ -27,7 +27,7 @@ $.ajax({
 		cityimages.push(cityobj);
 
 	}); // end each loop
-	console.log(cityimages);
+	// console.log(cityimages);
 	
 
 
@@ -72,15 +72,31 @@ $.ajax({
 			console.log(data);
 			
 			var tmplMarkup = $('#tmplTop10').html();
+
+			// reset the space
 			$('#topics').html('');
+
 			$.each(data, function(index) {			
 			var compiledTmpl = _.template(tmplMarkup, {name : data[index].name });
-			console.log(data[index].query)
+			console.log(data[index].query);
 			// $('#topics').append(data[index].name);
 			
 			$('#topics').append(compiledTmpl);
+			}); // end each
+
+			// put the clicked topic into search bar - callback hell?
+			$('.topicname').on('click', function(event){
+				event.preventDefault();
+
+				var topic = $(this).html();
+
+				console.log(topic);
+
+				searchInput.val(topic);
+
 			});
-		});
+
+		}); // end done getting cities
 		
 	}) // end map.addListener
 
