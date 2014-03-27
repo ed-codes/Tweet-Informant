@@ -42,11 +42,6 @@ gem 'bootstrap-sass'
 
 gem 'httparty'
 
-
-group :test do
-	gem 'simplecov'
-end
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

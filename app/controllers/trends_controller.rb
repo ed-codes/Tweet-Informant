@@ -42,11 +42,7 @@ class TrendsController < ApplicationController
 	end
 
 	def search 
-		# I should cache this too
-										# change this to params
-		@search_results = @client.search('%23putin', options = {:result_type => "popular"})
-
-		render :json => @search_results
+		 # @search_results = @client.search(%23auspol, options = {:result_type => "popular"})
 	end
 
 	
