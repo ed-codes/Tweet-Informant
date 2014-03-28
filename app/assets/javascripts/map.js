@@ -74,14 +74,14 @@ $.ajax({
 			var tmplMarkup = $('#tmplTop10').html();
 
 			// reset the space
-			$('#topics').html('');
+			$('#topiclist').html('');
 
 			$.each(data, function(index) {			
 			var compiledTmpl = _.template(tmplMarkup, {name : data[index].name });
 			console.log(data[index].query);
 			// $('#topics').append(data[index].name);
 			
-			$('#topics').append(compiledTmpl);
+			$('#topiclist').append(compiledTmpl);
 			}); // end each
 
 			// put the clicked topic into search bar - callback hell?

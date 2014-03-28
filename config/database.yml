@@ -54,4 +54,6 @@ production:
   encoding: unicode
   database: TweetInformant_production
   pool: 5
+  username: ENV['PG_USERNAME']
+  password: ENV['PG_SECRET']
 

@@ -27,7 +27,8 @@ body, html {
 }
 
 #map, #topics, #tweets {
-	border: 10px solid #E4ECF5;
+	border: 5px solid #E4ECF5;
+	border-radius: 20px;
 	height: 85vh;
 	overflow: scroll;
 
@@ -35,5 +36,20 @@ body, html {
 
 li {
 	list-style-type: none;
+}
+
+h1 {
+	font-family: 'Aldrich', sans-serif;
+	display: inline-block;
+}
+
+#logo {
+	display: inline-block;
+	margin-left: 30px;
+	margin-bottom: 15px;
+}
+
+#topiclist {
+	padding: 0;
 }
 
