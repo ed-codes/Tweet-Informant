@@ -55,10 +55,10 @@ class TrendsController < ApplicationController
 	def setup
 
 		@client = Twitter::REST::Client.new do |config|
-			config.consumer_key        = "4yyLe1DMOtY3tpCAVx4w"
-			config.consumer_secret     = "e7BZXZM54nNO04GiP8d9rixZdz4v9SZ3RKeXrLdHujo"
-			config.access_token        = "628446928-yfO6Tnew2KtRdRAuOWlcnC2OUI7ZkokyUC5qXLFc"
-			config.access_token_secret = "4N5kzSLHq9kf4hQgRXTUkBj58ZLSVbtbWkcy3GFqNUBSh"
+			config.consumer_key        = ENV["TWITTER_CONSUMER_KEY"]
+			config.consumer_secret     = ENV["TWITTER_CONSUMER_SECRET"]
+			config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
+			config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
 		end
 
 	end

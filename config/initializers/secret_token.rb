@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-TweetInformant::Application.config.secret_key_base = 'b1b01fe7b94b09e440defd4666509bab86ac276538e747c79c09556c95537d9fef4b5462c59b78d7d76adbf4380e29b2c56c5615bc9884e338774e4bdc0e2f46'
+TweetInformant::Application.config.secret_key_base = ENV['RAILS_SECRET_KEY_BASE']
